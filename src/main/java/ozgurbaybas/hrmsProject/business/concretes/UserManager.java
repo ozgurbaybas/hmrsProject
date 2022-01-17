@@ -3,6 +3,7 @@ package ozgurbaybas.hrmsProject.business.concretes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ozgurbaybas.hrmsProject.business.abstracts.UserService;
+import ozgurbaybas.hrmsProject.business.constants.Messages;
 import ozgurbaybas.hrmsProject.core.utilities.results.DataResult;
 import ozgurbaybas.hrmsProject.core.utilities.results.Result;
 import ozgurbaybas.hrmsProject.core.utilities.results.SuccessDataResult;
@@ -24,11 +25,11 @@ public class UserManager implements UserService {
     @Override
     public Result register(User user) {
         this.userDao.save(user);
-        return new SuccessResult("Registration Successful");
+        return new SuccessResult(Messages.Added);
     }
 
     @Override
     public DataResult<List<User>> getAll() {
-        return new SuccessDataResult<List<User>>(this.userDao.findAll(), "Listed");
+        return new SuccessDataResult<List<User>>(this.userDao.findAll(), Messages.Listed);
     }
 }
