@@ -1,17 +1,21 @@
 package ozgurbaybas.hrmsProject.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
 
 @Data
 @Entity
 @Table(name = "technologies")
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","resumes"})
 public class Technology {
 
     @Id
@@ -30,5 +34,8 @@ public class Technology {
 
     @Column(name = "active")
     private boolean active;
+
+    @OneToMany(mappedBy = "technology")
+    private List<Resume> resumes;
 
 }

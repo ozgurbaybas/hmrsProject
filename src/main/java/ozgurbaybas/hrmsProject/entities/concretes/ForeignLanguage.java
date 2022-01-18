@@ -1,17 +1,21 @@
 package ozgurbaybas.hrmsProject.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
 
 @Data
 @Entity
 @Table(name = "foreign_languages")
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","resumes"})
 public class ForeignLanguage {
 
     @Id
@@ -34,4 +38,6 @@ public class ForeignLanguage {
     @Column(name = "active")
     private boolean active;
 
+    @OneToMany(mappedBy = "foreignLanguage")
+    private List<Resume> resumes;
 }

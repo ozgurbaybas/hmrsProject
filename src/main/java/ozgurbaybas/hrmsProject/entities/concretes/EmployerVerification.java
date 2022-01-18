@@ -7,12 +7,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "employers_verifications")
 public class EmployerVerification {
+
     @Id
     @Column(name = "employer_id")
     private int employerId;
@@ -25,4 +27,5 @@ public class EmployerVerification {
 
     @Column(name = "active")
     private boolean active;
+
 }

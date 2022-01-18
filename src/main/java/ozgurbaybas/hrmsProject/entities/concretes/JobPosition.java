@@ -1,12 +1,14 @@
 package ozgurbaybas.hrmsProject.entities.concretes;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
@@ -14,7 +16,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "job_positions")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
 public class JobPosition {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "job_position_id")
@@ -28,5 +32,8 @@ public class JobPosition {
 
     @Column(name = "active")
     private boolean active;
+
+    @OneToMany(mappedBy = "jobPosition")
+    private List<JobAdvertisement> jobAdvertisements;
 
 }

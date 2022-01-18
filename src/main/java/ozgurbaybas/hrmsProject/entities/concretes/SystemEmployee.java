@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -26,4 +27,5 @@ public class SystemEmployee extends User{
 
     @Column(name = "active")
     private boolean active;
+
 }

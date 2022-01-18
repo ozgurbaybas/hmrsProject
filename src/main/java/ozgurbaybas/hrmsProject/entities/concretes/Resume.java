@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Data
 @Entity
 @Table(name = "resumes")
@@ -40,5 +41,21 @@ public class Resume {
 
     @Column(name = "active")
     private boolean active;
+
+    @ManyToOne()
+    @JoinColumn(name = "education_id")
+    private Education education;
+
+    @ManyToOne()
+    @JoinColumn(name = "technology_id")
+    private Technology technology;
+
+    @ManyToOne()
+    @JoinColumn(name = "work_experience_id")
+    private WorkExperience workExperience;
+
+    @ManyToOne()
+    @JoinColumn(name = "foreign_language_id")
+    private ForeignLanguage foreignLanguage;
 
 }

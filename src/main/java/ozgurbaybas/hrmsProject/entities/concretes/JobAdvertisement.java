@@ -39,4 +39,24 @@ public class JobAdvertisement {
 
     @Column(name = "active")
     private boolean active;
+
+    @ManyToOne()
+    @JoinColumn(name = "city_id")
+    private City city;
+
+    @ManyToOne()
+    @JoinColumn(name = "job_position_id")
+    private JobPosition jobPosition;
+
+    @ManyToOne()
+    @JoinColumn(name = "employer_id")
+    private Employer employer;
+
+    @ManyToOne()
+    @JoinColumn(name = "type_of_work_id")
+    private TypeOfWork typeOfWork;
+
+    @ManyToOne()
+    @JoinColumn(name = "job_type_id")
+    private JobType jobType;
 }

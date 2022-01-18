@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -33,4 +34,5 @@ public class Candidate extends User {
 
     @Column(name = "active")
     private boolean active;
+
 }

@@ -1,11 +1,13 @@
 package ozgurbaybas.hrmsProject.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -14,6 +16,7 @@ import java.util.Date;
 @PrimaryKeyJoinColumn(name = "user_id")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name ="employers")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
 public class Employer extends User {
 
     @Column(name = "company_name")
@@ -30,5 +33,8 @@ public class Employer extends User {
 
     @Column(name = "active")
     private boolean active;
+
+    @OneToMany(mappedBy = "employer")
+    private List<JobAdvertisement> jobAdvertisements;
 
 }
